@@ -4,7 +4,7 @@ title:      "CQUPT Training Nov28th - Dec3rd"
 subtitle:   "Blog Passage Test"
 date:       2016-11-28 15:28:00
 author:     "ShuTsing"
-header-img: "img/post-bg-1.jpg"
+header-img: "img/post-bg-4.jpg"
 header-mask: 0.3
 catalog:    true
 tags:
