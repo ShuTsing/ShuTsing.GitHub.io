@@ -3,7 +3,7 @@ title: ShuTsing's Blog
 SEOTitle: ShuTsing的博客 | ShuTsing's Blog
 header-img: img/home-bg.jpg
 email: shutsing@outlook.com
-description: "某喜爱二次元的程序员 | Someone who loves nijigen"
+description: "某热爱二次元的程序猿 | Someone who loves nijigen"
 keyword: "ShuTsing, Algorithm, 算法"
 url: "https://blog.shutsing.me"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
@@ -67,7 +67,7 @@ ga_domain: blog.shutsing.me
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "某喜爱二次元的程序员 <br> Someone who loves nijigen"
+sidebar-about-description: "某热爱二次元的程序猿 <br> Someone who loves nijigen"
 sidebar-avatar: /img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
