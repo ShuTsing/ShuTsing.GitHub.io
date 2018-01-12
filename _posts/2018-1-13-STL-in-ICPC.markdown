@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "C++ STL在ACM中的应用"
-subtitle:   "C++ STL in ACM-ICPC"
+subtitle:   "Use C++ STL in ACM-ICPC"
 date:       2018-01-13 13:12:00
 author:     "ShuTsing"
 header-img: "img/post-bg-17.jpg"
@@ -121,7 +121,7 @@ int main(void)
 int main(void)
 {
   st.insert((node){2, 4}); //注意，这种写法是C++ 11添加的   
-  
+
   st.insert((node){1, 3});
   st.insert((node){2, 2});
   st.insert((node){1, 2});
@@ -149,3 +149,6 @@ bool operator < (const node& a, const node& b)
   return false;
 }
 ```
+
+### auto关键字
+未完待续……
