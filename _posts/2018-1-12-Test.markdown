@@ -1,0 +1,67 @@
+---
+layout:     post
+title:      "博客文章测试"
+subtitle:   "Blog Passage Test"
+date:       2018-01-12 11:42:00
+author:     "ShuTsing"
+header-img: "img/post-bg-nextgen-web-pwa.jpg"
+header-mask: 0.3
+catalog:    true
+tags:
+    - BlogTest
+---
+
+#一级标题测试
+##二级标题测试
+###三级标题测试
+####四级标题测试
+
+Hello world
+せかい
+世界
+石灰
+せっかい
+世界
+
+代码测试
+```cpp
+#include <iostream>
+using namespace std;
+int main(void)
+{
+  for (int i=0; i<10; i++)
+  {
+    if (i % 2 == 0)
+      continue;
+    cout<<"Case "<<i<<endl;
+  }
+  cout<<"Hello world"<<endl;
+  return 0;
+}
+```
+
+分隔符测试
+---
+
+无序列表测试
+
+- 一个
+- 两个
+- 三个
+
+有序列表测试
+
+1. 一个
+2. 两个
+3. 三个
+
+链接测试
+[B站链接](https://www.bilibili.com)
+
+图片测试
+![](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515739490216&di=d7ba23511aa36b25fcb5232b5d0bc8ff&imgtype=0&src=http%3A%2F%2F2t.5068.com%2Fuploads%2Fallimg%2F160601%2F1-160601102501.jpg)
+
+引用测试
+
+> 这个是引用
+> 到底行不行呢
