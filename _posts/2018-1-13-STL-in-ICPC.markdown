@@ -121,6 +121,7 @@ int main(void)
 int main(void)
 {
   st.insert((node){2, 4}); //注意，这种写法是C++ 11添加的   
+  
   st.insert((node){1, 3});
   st.insert((node){2, 2});
   st.insert((node){1, 2});
