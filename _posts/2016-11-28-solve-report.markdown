@@ -9,6 +9,8 @@ header-mask: 0.3
 catalog:    true
 tags:
     - BlogTest
+    - 题解
+    - 算法
 ---
 
 从作业部落迁移过来进行测试。  
