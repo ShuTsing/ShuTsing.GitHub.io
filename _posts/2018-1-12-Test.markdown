@@ -4,7 +4,7 @@ title:      "博客文章测试"
 subtitle:   "Blog Passage Test"
 date:       2018-01-12 11:42:00
 author:     "ShuTsing"
-header-img: "https://i.pximg.net/img-original/img/2017/12/15/01/53/30/66294279_p0.jpg"
+header-img: "img/post-bg-1.jpg"
 header-mask: 0.3
 catalog:    true
 tags:
