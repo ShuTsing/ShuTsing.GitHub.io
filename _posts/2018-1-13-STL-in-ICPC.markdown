@@ -47,7 +47,7 @@ STL的很多方法的方法（成员函数）名称的命名会考虑到时间�
 
 ## 前置技能  
 虽然说是前置技能，但是其实不需要怎么掌握也能用STL（逃  
-但是我认为如果能够比较了解这些内容的话，可以更好的使用STL。
+但是我认为如果能够比较了解这些内容的话，可以更好的使用STL（但是只会一带而过的讲，如果之前语言基础不牢固还要去查其他资料）。
 
 ### 指针
 指针在算法竞赛中能够使用到的地方真是少之又少，除了trie（字典树）等几个算法或数据结构外几乎都可以用其他方法替代（包括trie也是可以用数组模拟的）。  
@@ -64,7 +64,7 @@ int main(void)
 {
   int a = 1, b = 2;
   swap(&a, &b);
-  cout <<a <<" " <<b <<endl;
+  cout<< a<< " "<< b<< endl;
   return 0;
 }
 ```
@@ -85,7 +85,7 @@ int main(void)
 {
   int a = 1, b = 2;
   swap(a, b);
-  cout <<a <<" " <<b <<endl;
+  cout<< a<< " "<< b<< endl;
   return 0;
 }
 ```
@@ -93,3 +93,58 @@ int main(void)
 输出结果： 2  1  
 
 和指针传参效果一样，但是相比于用指针传递参数而言要方便很多。在要传占用内存较大的变量或类时可以用指针传递来加快效率。
+
+### 运算符重载
+你要是能在算法竞赛中遇到需要用运算符重载的情况的话，那真是撞大运了（其实就是也用的很少（逃。但是同前两个一样，在一些场合还是需要的。
+
+- 高精度计算，这不是这篇要讲的东西（用Java去）
+- 进行结构体或类的比较运算（比如你突发奇想打算在set里面装结构体）
+
+运算符重载简而言之就是重新赋予C++原有的运算符新的意义。因为C++自带的类型有限，有时你需要去实现自定义的类或者结构体之间的运算。
+
+让我们来看下面代码，我们需要将node以x为第一关键字，y为第二关键字按升序排序：  
+```cpp
+  struct node
+  {
+    int x;
+    int y;
+    bool operator < (const node& a) const
+    {
+      if (x < a.x)
+        return true;
+      else if (x == a.x && y < a.y)
+        return true;
+      return false;
+    }
+  };
+  set <node> st;
+int main(void)
+{
+  st.insert((node){2, 4}); //注意，这种写法是C++ 11添加的
+  st.insert((node){1, 3});
+  st.insert((node){2, 2});
+  st.insert((node){1, 2});
+  for (i: st)
+    cout<< i.x<< " "<< i.y<< endl;
+  return 0;
+}
+```
+
+输出结果：  
+1 1  
+1 3  
+2 2  
+2 4  
+
+除了这种方法外，大多数运算符还能重载到结构体或类的外部。  
+比如，上面的运算符重载函数还能在node外写成：  
+```cpp
+bool operator < (const node& a, const node& b)
+{
+  if (a.x < b.x)
+    return true;
+  else if (a.x == b.x && a.y < b.y)
+    return true;
+  return false;
+}
+```
