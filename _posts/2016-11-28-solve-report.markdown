@@ -15,6 +15,8 @@ tags:
 
 从作业部落迁移过来进行测试。  
 
+这个博客对markdown的支持有点迷。
+
 ## CQUPT Training Nov28th - Dec3rd
 ![banner.jpg-269kB][1]
 
@@ -28,7 +30,9 @@ tags:
 ### 代码
 ```cpp
 #include <iostream>
+
 #include <cstring>
+
 using namespace std;
     bool vis[1000005];
 int main(void)
@@ -62,6 +66,7 @@ int main(void)
 ### 代码
 ```cpp
 #include <iostream>  
+
 using namespace std;
     int flag[2005]={0};
 int main(void)
@@ -127,7 +132,9 @@ int main(void)
 ### 代码
 ```cpp
 #include <iostream>  
+
 #include <string>  
+
 using namespace std;
     string name[2][100005];
     int p[100005];
@@ -193,8 +200,11 @@ int main(void)
 ### 代码
 ```cpp
 #include <iostream>  
+
 #include <cstring>  
+
 #include <algorithm>  
+
 using namespace std;
     int arr[10]={0};
 int main(void)
@@ -229,9 +239,13 @@ int main(void)
 ### 代码
 ```cpp
 #include <iostream>  
+
 #include <cstring>  
+
 #include <vector>  
+
 #include <algorithm>  
+
 using namespace std;
     vector <int> arr[2005];
     vector <int> oput[3];
@@ -312,7 +326,9 @@ int main(void)
 ### 代码
 ```cpp
 #include <iostream>  
+
 #include <algorithm>  
+
 using namespace std;
 int main(void)
 {
@@ -341,6 +357,7 @@ int main(void)
 ### 代码
 ```cpp
 #include <iostream>
+
 using namespace std;
 int main(void)
 {
@@ -366,8 +383,11 @@ int main(void)
 ### 代码
 ```cpp
 #include <iostream>  
+
 #include <cstring>  
+
 using namespace std;
+
     int pler[1005];
 int one(int x)
 {
@@ -410,9 +430,13 @@ m是每组的数的个数，p数组是n个数的前缀和。
 ### 代码
 ```cpp
 #include <iostream>  
+
 #include <cstring>  
+
 #include <algorithm>  
+
 using namespace std;
+
     long long p[5005];
     long long dp[5005][5005];
     int m;
@@ -455,7 +479,9 @@ int main(void)
 
 ```cpp
 #include <iostream>  
+
 #include <algorithm>  
+
 using namespace std;
 int main(void)
 {
@@ -487,8 +513,11 @@ int main(void)
 
 ```cpp
 #include <iostream>  
+
 #include <algorithm>  
+
 #include <cmath>  
+
 using namespace std;
 int main(void)
 {
@@ -556,7 +585,9 @@ int main(void)
 ### 代码
 ```cpp
 #include <iostream>
+
 #include <cstring>
+
 using namespace std;
     long long fir[500005];
 int main(void)
