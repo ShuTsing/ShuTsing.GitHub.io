@@ -292,7 +292,7 @@ vector <T> iterator::itr;
 这个迭代器就相当于这个容器用于遍历的指针，用法如下：
 ```cpp
 for(itr = v.begin(); itr != v.end(); itr++)
-  cout<< *itr<< endl；
+  cout<< *itr<< endl;
 ```
 begin()和end()是vector容器提供的两个方法，前者返回头部元素的位置，后者返回的是尾部元素之后的位置。
 
