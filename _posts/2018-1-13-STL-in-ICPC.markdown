@@ -151,14 +151,14 @@ bool operator < (const node& a, const node& b)
 ```
 
 ### auto关键字
-auto 关键字在上古时代的C++便已经存在，但是因为其含义实在太废了所以几乎没人会用到这个关键字。  
+auto 关键字在上古时代的C++便已经存在，但是因为其含义实在太废了（用于声明变量为自动变量，不声明也是）所以几乎没人会用到这个关键字。  
 而在C++ 11标准中加入的类型推断重新定义了auto关键字的含义，现在不少ACM-ICPC，CCPC 的赛区还有一些oj都加入对C++ 11标准的支持，所以我们可以在比赛中使用这些C++ 11标准的特性。
 
 auto关键字现在可以在声明变量的时候根据变量初始值的类型自动为此变量选择匹配的类型，配合同是C++ 11标准加入的for语句的新用法在有的时候可以加快代码的编写速度。
 
 比如在之前的一个地方，出现了下面这种写法：  
 ```cpp
-for(auto i: st)
+for (auto i: st)
   cout<<i<<endl;
 ```  
 这种写法中，for循环会从头到尾遍历一遍st容器，将其中的值取出。需要注意的是，如果要修改元素的值的话，应该声明成引用auto& i。
@@ -166,7 +166,7 @@ for(auto i: st)
 如果这里用原来的写法则要写成：
 ```cpp
 set <int> iterator::itr;
-for(itr = st.begin(); itr != st.end(); itr++)
+for (itr = st.begin(); itr != st.end(); itr++)
   cout<<*itr<<endl;
 ```
 这种写法在数组上效果不好，毕竟很少有人会遍历完整个数组，但是在C++ STL所提供的容器上面使用这种for语句的用法效果就很不错。  
@@ -211,6 +211,12 @@ STL的中文名称就叫标准模板库，那么什么是模板呢？
 
 #### vector
 说实话我不是很懂为什么C++ STL要把动态数组取名为vector而不是ArrayList，这直接导致我写向量类的时候取名异常纠结。   
+
+使用vector容器需要声明头文件：
+```cpp
+#include <vector>
+```
+vector的元素可以是任意类型T，但必须具备赋值和拷贝能力。
 
 **- vector对象的定义和初始化**  
 ```cpp
@@ -259,5 +265,122 @@ v.back() = a;
 以上的访问方法的时间复杂度均为O(1)。
 
 **- vector中元素的遍历**  
+
+终于要将迭代器了。
+vector容器中的元素有两种遍历方法，一种是通过下标像数组一样遍历：  
+```cpp
+vector <int> v;
+for (int i = 0; i < v.size(); i++)
+  cout<<v[i]<<endl;
+```  
+还有一种方法，就是通过迭代器进行遍历。  
+
+迭代器简单的来说就是将容器内部的指针进行了封装。
+
+我们想一想普通数组如果用指针遍历应该怎么办呢？
+```cpp
+int n = 100;
+int arr[n + 1];
+for(int* p = arr; p != &arr[n]; p++)
+  cout<< *p<< endl;
+```
+
+而迭代器的声明如下：
+```cpp
+vector <T> iterator::itr;
+```
+这个迭代器就相当于这个容器用于遍历的指针，用法如下：
+```cpp
+for(itr = v.begin(); itr != v.end(); itr++)
+  cout<< *itr<< endl；
+```
+begin()和end()是vector容器提供的两个方法，前者返回头部元素的位置，后者返回的是尾部元素之后的位置。
+
+而我们如果需要对元素进行逆向的遍历，则需要更换另一种迭代器，同时声明头文件itreator。
+```cpp
+include <iterator>
+
+vector <int> v;
+vector <int> reverse_iterator::ritr;
+
+for(ritr = v.rbegin(); ritr != v.rend(); ritr++)
+  cout<< *ritr<< endl;
+```
+rbegin()方法返回头部元素之前的位置，rend()返回尾部元素的位置。
+
+对于不需要用到下标的正向遍历，我们可以用下面这种C++ 11标准加入的for语句使用方法：
+```cpp
+for(int i: v)
+  cout<< i<< endl;
+for(int& i: v)
+  i = 1;
+```
+注意的是，如果需要修改容器的元素，一定要将i声明成引用。
+
+而其他需要用到迭代器的地方，我们也可以用auto关键字进行简化：
+```cpp
+for(auto i = v.rbegin(); i != v.rend(); i++)
+  cout<< *i<< endl;
+```
+
+两个同类迭代器之间可以用成员函数distance()来求距离：
+```cpp
+include <iterator>
+
+distance(first, last);//返回last - first的距离  
+```
+需要注意的是，distance()方法只有在诸如vector，deque等能随机访问元素的容器的迭代器上面有较好的效率，即时间复杂度为O(1)，反之，在诸如list，set等不支持随机访问元素的容器的迭代器上面则需要O(n)的时间复杂度来完成距离计算。  
+
+两个同类型的迭代器还能用iter_swap()方法进行交换
+```cpp
+include <iterator>
+
+iter_swap(itr1, itr2);
+```
+
+
+**- vector中元素的插入**
+
+vector容器提供了push_back()方法用于在尾部插入元素，同时提供了insert()方法进行随机插入。
+
+push_back()的时间复杂度为O(1)。   
+insert()的时间复杂度为O(n)。
+
+方法如下：
+```cpp
+v.push_back(e); //在尾部插入e的副本
+
+v.insert(pos,e); //在pos位置插入元素e的副本，并返回新元素位置
+
+v.insert(pos,n,e); //在pos位置插入n个元素e的副本
+
+v.insert(pos,beg,end); //在pos位置插入区间[beg,end]内所有元素的副本
+
+```
+具体用法如下：
+```cpp
+std::vector<int> v(4, 2);
+v.insert(v.begin + 1, 3);
+```
+在插入之前，v中的元素为：  
+
+Index | Value
+:-: | :-:
+ 0 | 2
+ 1 | 2
+ 2 | 2
+ 3 | 2
+
+ 插入之后，变为了：
+
+ Index | Value
+ :-: | :-:
+  0 | 2
+  1 | 3
+  2 | 2
+  3 | 2
+  4 | 2
+
+**- vector中元素的删除**  
 
 未完待续……
