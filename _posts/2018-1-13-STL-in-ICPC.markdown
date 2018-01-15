@@ -312,7 +312,7 @@ begin()和end()是vector容器提供的两个方法，前者返回头部元素�
 
 而我们如果需要对元素进行逆向的遍历，则需要更换另一种迭代器，同时声明头文件itreator。
 ```cpp
-include <iterator>
+#include <iterator>
 
 vector <int> v;
 vector <int> reverse_iterator::ritr;
@@ -339,7 +339,7 @@ for(auto i = v.rbegin(); i != v.rend(); i++)
 
 两个同类迭代器之间可以用成员函数distance()来求距离：
 ```cpp
-include <iterator>
+#include <iterator>
 
 distance(first, last);//返回last - first的距离  
 ```
@@ -347,7 +347,7 @@ distance(first, last);//返回last - first的距离
 
 两个同类型的迭代器还能用iter_swap()方法进行交换
 ```cpp
-include <iterator>
+#include <iterator>
 
 iter_swap(itr1, itr2);
 ```
