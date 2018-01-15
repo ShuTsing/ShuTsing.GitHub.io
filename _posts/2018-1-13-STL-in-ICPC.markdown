@@ -251,7 +251,17 @@ vector在开辟内存空间时是开辟的一段定长的连续空间，假设�
 
 此外，vector容器还提供了front()和back()方法用于读取或修改头尾的元素。  
 
-总结下来，便是：  
+```cpp
+T& v[int idx];
+
+T& v.at(int idx);
+
+T& v.front();
+
+T& v.back();
+```
+
+具体用法，便是：  
 ```cpp
 vector <int> v(5);
 
@@ -439,6 +449,14 @@ list <T> l(int n, T e); // 生成一个含有n个值为e的元素的list
 list <T> l(itr beg, itr end); //产生一个list，以区间[beg,end]为元素初值
 ```
 
+**-list的大小和容量**
+
+list容器基于双向链表，不会出现如vector容器那样的元素数量和元素容量不同的问题。  
+
+list容器提供了size()方法返回当前元素个数，并提供了max_size()方法返回所能容纳的最大元素个数。  
+
+list容器的max_size同样非常大，在算法竞赛中一般不需要关心。  
+
 **-list中元素的访问**
 
 list容器不支持随机访问，仅提供front()和back()方法访问首尾元素。
@@ -449,5 +467,18 @@ T& l.back();
 ```
 
 **-list中元素的遍历**
+
+list容器不能通过下标进行元素遍历，只能通过迭代器进行遍历:  
+
+```cpp
+list <T> iterator::itr;
+for (itr = lt.begin(); itr != lt.end(); itr++)
+  cout<< *itr<< endl;
+
+for (T i: lt)
+  cout<< i<< endl;
+```
+
+**-list中元素的插入**
 
 未完待续……
