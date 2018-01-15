@@ -222,11 +222,13 @@ vector的元素可以是任意类型T，但必须具备赋值和拷贝能力。
 ```cpp
 vector <T> vec; // vector保存类型为T的对象。默认构造函数vec为空。
 
-vector <T> vec(vec2); // vec是vec2的一个副本
+vector <T> vec(vector <T> vec2); // vec是vec2的一个副本
 
-vector <T> vec(n, i); // vec含有n个数值为i的元素
+vector <T> vec(int n, T i); // vec含有n个数值为i的元素
 
-vector <T> vec(n); // vec含有n个数值为0的元素
+vector <T> vec(int n); // vec含有n个数值为0的元素
+
+vector <T> vec(itr beg, itr end); // 产生一个vector，以区间[beg,end]为元素初值
 
 ```
 **- vector的大小和容量**  
@@ -350,13 +352,13 @@ insert()的时间复杂度为O(n)。
 
 方法如下：
 ```cpp
-v.push_back(e); //在尾部插入e的副本
+void v.push_back(T e); //在尾部插入e的副本
 
-v.insert(pos,e); //在pos位置插入元素e的副本，并返回新元素位置
+itr v.insert(int pos, T e); //在pos位置插入元素e的副本，并返回新元素位置
 
-v.insert(pos,n,e); //在pos位置插入n个元素e的副本
+itr v.insert(int pos, int n, T e); //在pos位置插入n个元素e的副本
 
-v.insert(pos,beg,end); //在pos位置插入区间[beg,end]内所有元素的副本
+itr v.insert(int pos, itr beg, itr end); //在pos位置插入区间[beg,end]内所有元素的副本
 
 ```
 具体用法如下：
@@ -392,11 +394,11 @@ erase()的时间复杂度为O(n)。
 
 方法如下：
 ```cpp
-v.pop_back(); //移除尾部元素但不返回
+void v.pop_back(); //移除尾部元素但不返回
 
-v.erase(pos); //删除pos位置的元素，返回下一个元素的位置
+itr v.erase(int pos); //删除pos位置的元素，返回下一个元素的位置
 
-v.erase(beg,end); //删除区间[beg,end]内所有元素，返回下一个元素的位置
+itr v.erase(itr beg, itr end); //删除区间[beg,end]内所有元素，返回下一个元素的位置
 
 ```
 
@@ -423,5 +425,29 @@ list是C++ STL提供的双向链表容器。不支持随机存取，但是有良
 ```cpp
 #include <list>
 ```
+**-list对象的定义和初始化**  
+
+```cpp
+list <T> l; // 产生空的list
+
+list <T> l(list <T> l2); // 生成一个复制了l2的所有元素的l
+
+list <T> l(int n); // 生成一个含有n个空元素的的list
+
+list <T> l(int n, T e); // 生成一个含有n个值为e的元素的list
+
+list <T> l(itr beg, itr end); //产生一个list，以区间[beg,end]为元素初值
+```
+
+**-list中元素的访问**
+
+list容器不支持随机访问，仅提供front()和back()方法访问首尾元素。
+```cpp
+T& l.front();
+
+T& l.back();
+```
+
+**-list中元素的遍历**
 
 未完待续……
