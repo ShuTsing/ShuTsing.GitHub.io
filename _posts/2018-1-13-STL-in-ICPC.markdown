@@ -502,15 +502,15 @@ list容器提供了用于进行选择删除的方法。
 ```cpp
 void l.pop_front(); //移除头部元素但不返回
 
-void v.pop_back(); //移除尾部元素但不返回
+void l.pop_back(); //移除尾部元素但不返回
 
-itr v.erase(int pos); //删除pos位置的元素，返回下一个元素的位置
+itr l.erase(int pos); //删除pos位置的元素，返回下一个元素的位置
 
-itr v.erase(itr beg, itr end); //删除区间[beg,end]内所有元素，返回下一个元素的位置
+itr l.erase(itr beg, itr end); //删除区间[beg,end]内所有元素，返回下一个元素的位置
 
-void v.remove(T e); //删除所有值为e的元素
+void l.remove(T e); //删除所有值为e的元素
 
-void v.remove_if(func f); //删除所有func(e) == true 的元素
+void l.remove_if(func f); //删除所有func(e) == true 的元素
 
 
 ```
