@@ -412,6 +412,10 @@ itr v.erase(itr beg, itr end); //删除区间[beg,end]内所有元素，返回�
 
 ```
 
+**- vector中的操作符**
+
+如果vector里面存放元素是简单类型（C++自带的那些类型）的话，可以使用操作符==和!=判断两个vector是否相等。还可以通过>, <, >=, <=操作符比较两个vector容器内元素的字典序。
+
 **- vector中其他方法**
 
 1. 清空元素 方法clear()，时间复杂度O(n)。  
@@ -435,7 +439,7 @@ list是C++ STL提供的双向链表容器。不支持随机存取，但是有良
 ```cpp
 #include <list>
 ```
-**-list对象的定义和初始化**  
+**- list对象的定义和初始化**  
 
 ```cpp
 list <T> l; // 产生空的list
@@ -449,15 +453,16 @@ list <T> l(int n, T e); // 生成一个含有n个值为e的元素的list
 list <T> l(itr beg, itr end); //产生一个list，以区间[beg,end]为元素初值
 ```
 
-**-list的大小和容量**
+**- list的大小和容量**
 
 list容器基于双向链表，不会出现如vector容器那样的元素数量和元素容量不同的问题。  
 
-list容器提供了size()方法返回当前元素个数，并提供了max_size()方法返回所能容纳的最大元素个数。  
+list容器提供了size()方法返回当前元素个数，并提供了max_size()方法返回所能容纳的最大元素个数。    
+需要注意的是，对于gcc编译器，只有在gcc 5.0及以上并开启了C++ 11及以上标准的编译指令后，size()方法的时间复杂度为O(1)，在其他情况下，gcc所实现的list.size()的时间复杂度为O(n)。
 
 list容器的max_size同样非常大，在算法竞赛中一般不需要关心。  
 
-**-list中元素的访问**
+**- list中元素的访问**
 
 list容器不支持随机访问，仅提供front()和back()方法访问首尾元素。
 ```cpp
@@ -466,7 +471,7 @@ T& l.front();
 T& l.back();
 ```
 
-**-list中元素的遍历**
+**- list中元素的遍历**
 
 list容器不能通过下标进行元素遍历，只能通过迭代器进行遍历:  
 
@@ -479,7 +484,7 @@ for (T i: lt)
   cout<< i<< endl;
 ```
 
-**-list中元素的插入**
+**- list中元素的插入**
 
 
 ```cpp
@@ -494,7 +499,7 @@ itr l.insert(int pos, int n, T e); //在pos位置插入n个元素e的副本
 itr l.insert(int pos, itr beg, itr end); //在pos位置插入区间[beg,end]内所有元素的副本
 
 ```
-**-list中元素的删除**  
+**- list中元素的删除**   
 
 
 list容器提供了用于进行选择删除的方法。
@@ -514,4 +519,11 @@ void l.remove_if(func f); //删除所有func(e) == true 的元素
 
 
 ```
+
+**- list中的操作符**
+
+如果list里面存放元素是简单类型的话，可以使用操作符==和!=判断两个vector是否相等。还可以通过>, <, >=, <=操作符比较两个list容器内元素的字典序。
+
+**- list中的其他方法**
+
 未完待续……
