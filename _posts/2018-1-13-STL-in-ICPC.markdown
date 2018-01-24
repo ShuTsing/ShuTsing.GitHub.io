@@ -205,7 +205,7 @@ STL的中文名称就叫标准模板库，那么什么是模板呢？
 比如set，map之类的，在容器里面的排列顺序是通过某一种定义的排序方式来进行排序的，比如你存进去的时候是 5 2 1 3 这么来存的，在容器里面则是按照 1 2 3 5 这么来排的。  
 
 - 容器配接器：以某容器为底修改接口  
-比如queue，stack这种。个人感觉多半是修改的list的接口。
+比如queue，stack这种，是通过进一步封装其他容器得到的。
 
 下面会逐一介绍STL各个容器的用法。
 
@@ -364,11 +364,11 @@ insert()的时间复杂度为O(n)。
 ```cpp
 void v.push_back(T e); //在尾部插入e的副本
 
-itr v.insert(int pos, T e); //在pos位置插入元素e的副本，并返回新元素位置
+itr v.insert(itr pos, T e); //在pos位置插入元素e的副本，并返回新元素位置
 
-itr v.insert(int pos, int n, T e); //在pos位置插入n个元素e的副本
+itr v.insert(itr pos, int n, T e); //在pos位置插入n个元素e的副本
 
-itr v.insert(int pos, itr beg, itr end); //在pos位置插入区间[beg,end]内所有元素的副本
+itr v.insert(itr pos, itr beg, itr end); //在pos位置插入区间[beg,end]内所有元素的副本
 
 ```
 具体用法如下：
@@ -406,7 +406,7 @@ erase()的时间复杂度为O(n)。
 ```cpp
 void v.pop_back(); //移除尾部元素但不返回
 
-itr v.erase(int pos); //删除pos位置的元素，返回下一个元素的位置
+itr v.erase(itr pos); //删除pos位置的元素，返回下一个元素的位置
 
 itr v.erase(itr beg, itr end); //删除区间[beg,end]内所有元素，返回下一个元素的位置
 
@@ -492,11 +492,11 @@ void l.push_front(T e); //在头部插入e的副本
 
 void l.push_back(T e); //在尾部插入e的副本
 
-itr l.insert(int pos, T e); //在pos位置插入元素e的副本，并返回新元素位置
+itr l.insert(itr pos, T e); //在pos位置插入元素e的副本，并返回新元素位置
 
-itr l.insert(int pos, int n, T e); //在pos位置插入n个元素e的副本
+itr l.insert(itr pos, int n, T e); //在pos位置插入n个元素e的副本
 
-itr l.insert(int pos, itr beg, itr end); //在pos位置插入区间[beg,end]内所有元素的副本
+itr l.insert(itr pos, itr beg, itr end); //在pos位置插入区间[beg,end]内所有元素的副本
 
 ```
 **- list中元素的删除**   
@@ -517,13 +517,177 @@ void l.remove(T e); //删除所有值为e的元素
 
 void l.remove_if(func f); //删除所有func(e) == true 的元素
 
+void l.unique(); //删除所有重复元素
 
+void l.unique(func f); //删除所有func(e)  =true 的重复元素
 ```
 
 **- list中的操作符**
 
-如果list里面存放元素是简单类型的话，可以使用操作符==和!=判断两个vector是否相等。还可以通过>, <, >=, <=操作符比较两个list容器内元素的字典序。
+如果list里面存放元素是简单类型的话，可以使用操作符==和!=判断两个list是否相等。还可以通过>, <, >=, <=操作符比较两个list容器内元素的字典序。
+
+**- list中元素的排序**
+
+```cpp
+void l.sort(); //按照元素的<操作符进行排序
+
+void l.sort(func f); //按照f函数为准则对元素进行排序
+```
+
+**- list中元素的拷贝**
+
+```cpp
+void l.assign(int n, T e); //将n个元素e赋值给l
+
+void l.assign(itr begin, itr end); //将区间[begin, end]的元素赋值给l
+
+void l.merge(list l2); //若l, l2都已排序，那么将l2元素拷贝到l并保证拷贝后的序列有序
+
+void l.splice(itr pos, list l2); //将l2的元素拷贝到l的pos位置之前
+
+void l.splice(itr pos, list l2, itr l2pos); //将l2pos所指元素拷贝到pos之前
+
+void l.splice(ire pos, list l2, itr beg, itr end); //将l2的[beg, end]内元素拷贝到pos之前
+```
 
 **- list中的其他方法**
 
-未完待续……
+1. 清空元素 方法clear()，时间复杂度O(n)。  
+
+2. 判断为空 方法empty()返回值为容器的数量是否为空。
+
+3. 交换元素 方法swap()  
+使用方法：l1.swap(l2);
+
+4. 反转元素顺序 方法reverse()。
+
+
+#### deque
+
+deque是C++ STL提供的双端队列容器，支持头尾的增删操作。
+
+因为deque的内部实现与vector不同（deque会用多段定长连续空间实现），deque容器的随机存取速度会慢于vector容器。
+
+要使用deque容器，应包含头文件
+```cpp
+#include <deque>
+```
+
+**- deque对象的定义和初始化**  
+
+```cpp
+deque <T> d; // 产生空的deque
+
+deque <T> d(list <T> d2); // 生成一个复制了d2的所有元素的d
+
+deque <T> d(int n); // 生成一个含有n个空元素的的deque
+
+deque <T> d(int n, T e); // 生成一个含有n个值为e的元素的deque
+
+deque <T> d(itr beg, itr end); //产生一个deque，以区间[beg,end]为元素初值
+```
+
+**- deque的大小和容量**
+
+deque容器提供了size()方法返回当前元素个数，并提供了max_size()方法返回所能容纳的最大元素个数。
+并且deque容器提供了size()方法返回当前元素数量
+
+deque容器的max_size同样非常大，在算法竞赛中一般不需要关心。
+
+**- deque中元素的访问**
+
+deque容器虽然支持随机访问，但是其随机访问速度慢于vector容器。
+
+```cpp
+
+T& d[int idx];
+
+T& d.at(int idx);
+
+T& d.front();
+
+T& d.back();
+```
+
+**- deque中元素的遍历**
+
+deque容器支持随机存取，所以可以像数组那样通过下标进行遍历，但是因为deque的随机访问较慢，所以并不推荐这种写法：
+```cpp
+for (int i = 0; i < d.size(); i++)
+  cout<< d[i]<< endl;
+```
+
+deque容器支持迭代器遍历：
+
+```cpp
+dequen <T> iterator::itr;
+for (itr = d.begin(); itr != d.end(); itr++)
+  cout<< *itr<< endl;
+```
+
+**- deque中元素的插入**
+
+```cpp
+
+void d.push_front(T e); //在头部插入e的副本
+
+void d.push_back(T e); //在尾部插入e的副本
+
+itr d.insert(itr pos, T e); //在pos位置插入元素e的副本，并返回新元素位置
+
+itr d.insert(itr pos, int n, T e); //在pos位置插入n个元素e的副本
+
+itr d.insert(itr pos, itr beg, itr end); //在pos位置插入区间[beg,end]内所有元素的副本
+
+```
+
+**- deque中元素的删除**
+
+```cpp
+
+void d.pop_front(); //移除头部元素但不返回
+
+void d.pop_back(); //移除尾部元素但不返回
+
+itr d.erase(int pos); //删除pos位置的元素，返回下一个元素的位置
+
+itr d.erase(itr beg, itr end); //删除区间[beg,end]内所有元素，返回下一个元素的位置
+
+void d.clear(); //清空元素
+```
+
+**- deque中的操作符**
+
+如果deque里面存放元素是简单类型的话，可以使用操作符==和!=判断两个deque是否相等。还可以通过>, <, >=, <=操作符比较两个deque容器内元素的字典序。
+
+**- deque中元素的拷贝**
+
+```cpp
+void l.assign(int n, T e); //将n个元素e赋值给d
+
+void l.assign(itr begin, itr end); //将区间[begin, end]的元素赋值给d
+```
+
+**- deque中的其他方法**
+
+1. 清空元素 方法clear()。  
+
+2. 判断为空 方法empty()返回值为容器的数量是否为空。
+
+3. 交换元素 方法swap()  
+使用方法：l1.swap(l2);
+
+#### vector, list, queue的选择
+
+算法竞赛中这三个基本上就用vector（逃    
+
+- 如果你需要高效的随即存取，而不在乎插入和删除的效率，使用vector
+- 如果你需要大量的插入和删除，而不关心随即存取，则应使用list
+- 如果你需要随即存取，而且关心两端数据的插入和删除，则应使用deque。
+- 在搞不清状态时，通常vector是最佳选择。
+
+#### string
+
+string类是C++ STL提供的字符串类。  
+
+（C++的字符串处理能力很弱，这个string类几乎感觉就是vector <char>）

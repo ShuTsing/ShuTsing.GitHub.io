@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "栈和队列讲解"
-subtitle:   "Stack and Queue"
-date:       2018-01-14 12:40:00
+title:      "简单数据结构"
+subtitle:   "Simple Data Structure"
+date:       2018-01-16 12:40:00
 author:     "ShuTsing"
 header-img: "img/post-bg-19.jpg"
 header-mask: 0.3
@@ -13,4 +13,6 @@ tags:
     - C++
 ---
 
-挖坑待填中……
+开始填坑了。。。
+
+接下来会介绍栈，队列和二叉树三种数据结构。
