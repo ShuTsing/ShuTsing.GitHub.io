@@ -2,7 +2,7 @@
 layout:     post
 title:      "简单数据结构"
 subtitle:   "Simple Data Structure"
-date:       2018-01-16 12:40:00
+date:       2018-01-14 12:40:00
 author:     "ShuTsing"
 header-img: "img/post-bg-19.jpg"
 header-mask: 0.3
