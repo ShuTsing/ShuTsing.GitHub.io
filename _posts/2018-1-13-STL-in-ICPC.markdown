@@ -675,7 +675,7 @@ void l.assign(itr begin, itr end); //将区间[begin, end]的元素赋值给d
 2. 判断为空 方法empty()返回值为容器的数量是否为空。
 
 3. 交换元素 方法swap()  
-使用方法：l1.swap(l2);
+使用方法：d1.swap(l2);
 
 #### vector, list, queue的选择
 
@@ -690,4 +690,4 @@ void l.assign(itr begin, itr end); //将区间[begin, end]的元素赋值给d
 
 string类是C++ STL提供的字符串类。  
 
-（C++的字符串处理能力很弱，这个string类几乎感觉就是vector <char>）
+（C++的字符串处理能力很弱，这个string类几乎感觉就是vector &lt;char&gt;）
