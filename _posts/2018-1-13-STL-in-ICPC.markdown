@@ -690,4 +690,10 @@ void l.assign(itr begin, itr end); //将区间[begin, end]的元素赋值给d
 
 string类是C++ STL提供的字符串类。  
 
+string并不是顺序容器，但是这里也一并讲了。
+
 （C++的字符串处理能力很弱，这个string类几乎感觉就是vector &lt;char&gt;）
+
+不过即便如此，用string还是会比char数组方便许多。
+
+未完待续。。。
