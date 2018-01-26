@@ -43,7 +43,7 @@ STL给我们提供了很多算法竞赛中经常使用到的算法和数据结�
 然而C++用以实现泛型编程的Template（模板）则是编译器多态，在编译时就会确定好类型，不会影响运行效率。（所以C++是世界上编译速度最慢的语言（逃  
 
 STL的很多方法的方法（成员函数）名称的命名会考虑到时间复杂度，比如各个容器的push_back()，pop_back()，push_front()等方法的时间复杂度都是O(1)的，这也是为什么容器vector不提供push_front()函数的原因，vector在头部插入的时间复杂度是O(n)的。所以在能用这类方法的时候就尽量不用insert()和erase()方法。  
-还比如说，如果你需要频繁的在头尾操作元素，就应该选用容器list，需要频繁进行随机存取就应该使用vector。在合适的情况选择合适的容器。  
+
 
 ## 前置技能  
 虽然说是前置技能，但是其实不需要怎么掌握也能用STL（逃  
@@ -189,7 +189,6 @@ STL的中文名称就叫标准模板库，那么什么是模板呢？
 在算法竞赛中，我们会使用到STL的以下几个部分：  
 - 容器（再算上字符串类）
 - 算法
-- 数值计算
 - 迭代器
 
 其中迭代器的讲解将会放在容器的讲解里面。下面就开始吧。
@@ -821,7 +820,6 @@ int s.find(char e, int pos, int n); //从pos开始找e的前n个;
 ```
 rfind() 方法和find() 方法用法类似，这里不再给出。
 
-string类还提供了find_first_of() 方法，返回
 
 **- string中的操作符**
 
@@ -848,3 +846,600 @@ bool s.empty();
 
 string substr(int pos = 0, int n = npos); //返回pos开始的n个字符组成的字符串;
 ```
+
+#### pair
+
+pair模板类用来绑定两个对象为一个新的对象。
+
+要使用pair需要声明头文件：  
+```cpp
+#include <utility>
+```
+
+**- pair对象的定义和初始化**
+
+```cpp
+pair <T1, T2> p;
+
+pair <T1, T2> p(v1, v2);
+
+make_pair(v1, v2);
+```
+
+pair的first和second属性(成员变量)分别为第一个和第二个的值。
+
+**- pair的运算符**
+
+```cpp
+p1 < p2; //如果p1.first<p2.first或者!(p2.first < p1.first)&& p1.second<p2.second，则返回true
+
+p1 == p2 //p1.first == p2.first && p1.second == p2.second
+```
+
+#### set/multiset
+
+set和multiset容器是C++ STL提供的集合类容器，不支持随机访问，通过在内部维护一种称之为“红黑树”的二叉排序树，从而使得其能达到较高的查找和删除效率。
+
+set和multiset的区别在于，set中相同值的元素只能存储一个，而multiset则能存储重复值的元素。
+
+set和multiset容器的方法相同，下面统一以set做说明。
+
+要使用这两个容器，需要声明头文件：
+
+```cpp
+#include <set>
+```
+
+**- set容器的声明**
+
+```cpp
+template <class Key, class Traits = less<Key>, class Allocator = allocator<Key> > class set;
+```
+
+其中参数K代表的set中元素的数据类型，Traits是用于实现集合内部排序的仿函数，如果不声明默认为less&lt;Key&gt;，Allocator代表集合的内存分配器，默认为allocator&lt;Key&gt;。
+
+一般在算法竞赛中，最后一个模板参数Allocator不需要考虑，第二个参数Traits用到的地方也比较少，但是在某些时候（比如Key的类型是自定义的类型）的时候，或者希望从大到小排的时候，就需要用到。
+
+**- set对象的定义和初始化**
+
+```cpp
+set <T> s;
+
+set <T> s(itr beg, itr end);
+
+set <T, functor> s(functor f);
+
+set <T, functor> s(itr functor f)
+```
+
+一般来说，如果遇到简单数据类型需要降序排列的话，可以定义为：
+
+```cpp
+set <T, greater <T> > st;
+```
+
+如果遇到结构体排序，可以用之前的重载运算符的方法，也可以给set类模板传参数：  
+
+1. 可以传函数指针：  
+```cpp
+bool comp(int x, int y) {return x < y;}
+typedef bool(* pass)(int, int);  
+set <int, pass> st(comp);
+```
+2. 可以传lambda表达式：  
+lambda表达式是C++ 11加入的匿名函数，在一些场合使用会更方便。  
+```cpp
+auto func = [] (int x, int y) {return x < y;};
+set <int, decltype(func)> st(func);
+```
+3. 可以传仿函数（函数对象）：  
+```cpp
+class comp
+{
+  public: bool operator () (int x, int y) const {return x < y;}
+};
+set <int, comp> st;
+```
+
+**- set容器的大小**
+
+同序列式容器一样，可以通过size() 方法获取元素个数，通过max_size() 方法获取能容纳的最大元素数量。
+
+**- set中元素的访问/查找**
+
+set不支持随机访问，亦不支持首尾访问，但是提供了查找方法find() 进行元素查找，亦可通过迭代器访问。
+
+```cpp
+  itr s.find(T e); //如果有返回元素对应的迭代器位置，没有返回s.end();
+```
+
+同时，set还支持一些其他的查找方法
+```cpp
+pair<itr, itr> s.equal_range(T e); //返回键值等于e的元素区间;
+
+int s.count(T e); //返回键值为e的元素的个数;
+
+itr s.upper_bound(T e); //返回大于e的第一个元素位置;
+
+itr s.lower_bound(T e); //返回大于等于e的第一个元素位置;
+```
+
+**- set中元素的遍历**
+
+set容器可通过迭代器遍历元素
+
+```cpp
+set <int>::iterator itr;
+for (itr = s.begin(); itr != s.end(); itr++)
+  cout<< *itr<< endl;
+```
+**- set中元素的插入**
+
+```cpp
+pair<itr, bool> s.insert(T e); //插入e。返回e的位置和是否成功插入
+
+void s.insert(itr beg, itr end);
+void s.insert(init_list l); //C++ 11标准方法
+```
+
+**- set中元素的删除**
+
+```cpp
+void s.clear();
+
+int s.erase(T e); //返回删除元素的个数
+```
+
+**- set中的其他方法**
+
+```cpp
+bool s.empty();
+```
+
+**- 用于set容器的函数**
+
+- set_union() 求两个set的并集
+- set_intersection() 求两个set的交集
+- set_difference() 求第一个相对于第二个的差集
+
+用法如下：  
+```cpp
+s3.end() set_union(s1.begin(), s1.end(), s2.begin(), s2.end(), s3.begin());
+```
+
+#### map/multimap
+
+map和multimap是C++ STL提供的键值对应的集合，很多用法和set/multiset很像，这里给出一些不同点。  
+
+使用map/multimap需要声明头文件：  
+```cpp
+#include <map>
+```
+
+**- map容器的声明**
+
+```cpp
+map <T Key, T Value, Functor Traits = less<Key>, Functor Allocator = allocator<pair<const Key, Value> > >;
+```
+
+map中前面一个模板参数放Key(键)，也就是通过键来进行排序，然后比set多了一个Value（值），可以通过键找到值。
+
+**- map中元素的遍历**
+
+map的迭代器（iterator）相当于一个pair有first和second两个属性（成员变量）。
+```cpp
+cout<< itr->first<< " "<< itr->second<< endl;
+```
+
+**- map中元素的查找**
+
+map中通过find()等方法返回的是迭代器，需要用itr->second获取值。
+
+map重载了下标运算符[]，可以通过下标下标运算符直接获取值。
+
+```cpp
+Tv a = m[Tk e];
+```
+
+需要注意的是，用下标运算符通过键获取值建议只获取在map中已经存在的键对应的值。
+
+**- map中元素的插入**
+
+map通过insert()方法插入要使用pair
+
+```cpp
+s.insert(pair<Tk, Tv>(k, v));
+
+s.insert(make_pair(k, v));
+
+s.insert({k, v}); //C++ 11;
+
+s.insert({{k1, v1}, {k2, v2}});//C++ 11
+```
+
+map也可以通过下标运算符[]插入：  
+
+```cpp
+m[Tk k] = v;
+```
+
+#### hashmap(set)/unordered_map(set)
+
+前面的map和set内部是用红黑树实现的，这里的这几个容器内部用散列（哈希）表实现的，hashmap(set)并非C++标准容器，而是各编译器厂商自行实现的，而unordered_map(set)为C++ 11标准加入的标准STL容器。  
+
+这里不再详细讲述这几种容器。
+
+#### bitset
+bitset是一个用于存储二进制位的容器，就像bool数组一样，但是有空间优化，bitset中的一个元素一般只占1 bit，即0.125个字节。
+
+要使用bitset需要声明头文件：  
+```cpp
+#include <bitset>
+```
+
+**- bitset对象的定义和声明**
+ ```cpp
+ bitset <int n> b; //n为二进制位数
+
+ bitset <int n> b(int num);
+ bitset <int n> b(string s); //s为字符串形式的二进制位
+ ```
+
+**- bitsetd的运算**
+
+bitset可以像一个整数一样的进行各种位运算，还可以和整数进行==运算。
+
+bitset支持下标运算符[]的操作，能通过下标获取和修改该位的值。
+
+bitset也可以使用cout输出。
+
+**- bitset的方法**
+
+```cpp
+int b.size(); //返回位数
+
+int b.count(); //返回为1的位数个数
+
+bool b.any(); //返回是否有为1的位
+
+bool b.none(); //范围是否没有为1的位
+
+bitset b.set(); //全部位赋值为1
+
+bitset b.set(int p); //将p位赋值为1
+
+bitset b.set(int p, bool num); //将p位设置为num
+
+bitset b.reset(); //全部位赋值为0
+
+bitset b.reset(int p);
+
+bitset b.flip(); //全部取反
+
+bitset b.flip(int p);
+
+unsigned long b.to_ulong(); //返回为ulong，超出报错
+
+unsigned long long b.to_ullong(); //返回为ull，超出报错
+
+string b.to_string(); //返回为string
+
+```
+
+#### stack
+
+stack是C++ STL提供的容器适配器：栈。
+
+若要使用stack，需声明头文件：
+```cpp
+#include <stack>
+```
+
+**- stack对象的定义和初始化**
+
+```cpp
+stack <T> s;
+stack <T, Container = deque<T> > s;
+```
+
+第二个模板参数是定义stack内部储存元素的容器，默认是deque，如果要修改，方法如下：  
+```cpp
+stack <int, vector <int> > st;
+```
+
+所有了序列式容器(vector, list, deque)都支持stack。
+
+**- stack提供的方法**
+
+```cpp
+void s.push(); //入栈
+
+void s.pop(); //出栈
+
+T s.top(); //获取栈顶元素
+
+bool s.empty();
+int s.size(); //返回栈中元素
+```
+
+需要注意的是，stack没有clear() 方法，如果需要清空，需要循环出栈。
+
+#### queue
+
+queue是C++ STL提供的容器适配器：队列。
+
+若要使用queue，需声明头文件：
+```cpp
+#include <queue>
+```
+
+**- queue对象的定义和初始化**
+
+```cpp
+queue <T> q;
+queue <T, Container = deque<T> > q;
+```
+
+vector容器因为无法提供pop_front() 方法因而无法作为queue的内部储存容器。
+
+**- queue提供的方法**
+
+```cpp
+void q.push(); //入队
+
+void q.pop(); //出队
+
+T q.front(); //获取队首元素
+
+T q.back(); //获取队尾元素
+
+bool q.empty();
+int q.size(); //返回栈中元素
+```
+
+queue同样没有提供clear()  方法，如果需要清空需循环出队。
+
+#### priority_queue
+
+priority_queue 是C++ STL提供的容器适配器：优先队列。
+
+何为优先队列？在优先队列中，元素并不是按照顺序存储在容器中的，而是按照优先级顺序存储在容器中的。即在此类队列中，被压入的元素已经按优先级顺序进行了自动排序，默认排序准则是“<”。
+
+优先队列和普通队列一样，使用时需要包含头文件：
+
+```cpp
+#include <queue>
+```
+
+**- priority_queue对象的定义和初始化**
+
+```cpp
+priority_queue <T> q;
+
+priority_queue <T, Container = deque<T> > q;
+
+priority_queue <T, Container = deque<T>, Compare = less <T> > q;
+```
+
+list容器因为无法提供随机存取迭代器因而无法作为queue的内部储存容器。
+
+如果需要自定义比较标准，参照set容器。
+
+**- priority_queue提供的方法**
+
+同queue。
+
+### 算法
+
+C++ STL提供了许多会在算法竞赛中用到的算法函数。
+
+要使用这些算法的函数，需要声明头文件：  
+
+```cpp
+#include <algorithm>
+```
+
+实现时会用到比较的函数一般都会提供自定义比较的方法。
+
+algorithm中提供的方法大体分为4类：
+
+- 非修改式序列算法
+- 修改式序列算法
+- 排序和相关操作
+- 通用数字运算
+
+#### sort()/stable_sort()
+
+sort绝对是算法竞赛中使用次数最多的STL算法库函数之一，此函数提供的基于快速排序，插入排序等排序的算法进行排序的功能，一般情况下比手写的快速排序速度还会快。
+
+```cpp
+sort(itr beg, itr end);
+
+sort(itr beg, itr end, func comp);
+```
+
+如果是对普通数组进行排序怎么办呢？
+
+```cpp
+sort(&arr[i], &arr[j]);
+
+sort(arr, arr + n);
+```
+
+一般我们对数组排序都会使用下面的做法，在这里，arr退化为数组首指针，和&arr[0]相同。
+
+对于sort的自定义比较，传自定义比较函数要比类模板传参要简单，如果传全局函数，可以直接传函数名：
+
+```cpp
+bool comp(int x, int y) {return x < y;}
+sort(arr, arr + n, comp);
+```
+
+如果传lambda表达式，则可以直接将表达式写在参数那里：  
+```cpp
+sort(arr, arr + n, [] (int x, int y) {return x < y;});
+```
+
+stable_sort() 能保证在排序时对于比较方法相同元素的相对顺序不发生改变。
+
+什么叫对于比较方法相同呢，比如你自定义了一个结构体和比较函数：
+
+```cpp
+stuct node { int x, y; };
+
+bool comp(node a, node b) { return a.x < b.x };
+```
+比较函数只比较了结构体中x的值，那么，比如说(node){x=1, y=1}就和(node){x=1, y=2}这两个结构体变量就对于比较函数comp相同。
+
+#### max()/min()
+
+max()和min()函数返回两个值中相比较大/小的元素
+
+```cpp
+T min(T a, T b);
+```
+
+#### max_element()/min_element()
+
+返回序列中较大/小的元素
+
+```cpp
+T max_element(itr beg, itr end);
+
+T max_element(itr beg, itr end, func comp);
+```
+
+#### reverse()/reverse_copy()
+
+将序列中的元素逆向顺序反转，reverse() 函数直接在源序列反转，reverse_copy() 函数将反转的结果放入一个新的序列。
+
+```cpp
+void reverse(itr beg, itr end);
+
+aimItrEnd reverse_copy(souItrBeg, souItrEnd, aimItrBeg);
+```
+
+#### rotate()/rotate_copy()
+
+旋转元素
+
+```cpp
+void rotate(itr beg, itr newBeg, itr end); //将beg的元素移动到newBeg，其他位置的元素同样按照这种距离移动。
+
+aimItrEnd rotate_copy(souItrBeg, souItrNewBeg, souItrEnd, aimItrBeg);
+```
+
+#### swap()
+
+交换两个元素的值。
+
+```cpp
+void swap(T a, T b);
+```
+
+#### next_permutation()/prev_permutation()
+
+提供全排列算法的函数。
+
+next_permutation() 用于求当前排列的下一个排列（比当前排列大），而prev_permutation() 用于求当前排列的上一个排列（比当前排列小）。
+
+两个函数的返回值均为bool类型，对于next_permutation()，若当前排列为最大排列，返回false，反之返回true，对于prev_permutation()，若当前排列为最小排列，返回false，反之返回true。
+
+```cpp
+bool next_permutation(itr beg, itr end);
+```
+
+#### lower_bound()/upper_bound()
+
+这两个函数用于实现对已排序的序列的二分查找。
+
+lower_bound()返回第一个大于等于给定值的元素的位置，如果没有则返回最后一个元素之后的位置。
+
+upper_bound()返回第一个大于给定值的元素的位置，如果没有则返回最后一个元素之后的位置。
+
+```cpp
+iter lower_bound(iter beg, iter end, T e);
+```
+
+#### unique()/unique_copy()
+
+用于移除序列中重复的元素，用以保证序列中相同值的元素唯一。
+
+需要注意的是，unique()的移除是伪移除，只是将重复的值放在序列的末尾，返回去重之后的尾地址。
+
+```cpp
+itr unique(itr beg, itr end);
+
+aimItrEnd unique(souItrBeg, souItrEnd, aimItrBeg);
+```
+
+#### count()/count_if()
+
+count() 函数提供了进行元素计数，即求得容器中元素的总个数的功能。另外，还提供了条件计数的函数：count_if()。
+
+```cpp
+int count(itr beg, itr end, T e); //返回[beg, end]中值为e的元素的个数
+
+int count_if(itr beg, itr end, func comp); //返回使comp返回true的元素的个数
+```
+
+#### find()/find_if()
+
+STL算法库提供了用于搜索的算法，find() 函数返回第一个和给定值相同值的元素的位置，而find_if()用于条件搜索。
+
+```cpp
+itr find(itr beg, itr end, T e);
+
+itr find_if(itr beg, itr end, func comp);
+```
+
+### stringstream
+
+C++ STL提供了stringstream类用于进行数字和字符串之间的转换。  
+（C++ 11提供了诸如to_string()之类的更方便的方法，在此不进行叙述）
+
+要使用stringstream类，需要包含头文件：
+```cpp
+#include <sstream>
+```
+
+stringstream的对象通过<<运算符读入需要转换的数字（字符串），再用>>运算符输出转换完成的字符串（数字）。
+
+具体用法如下：  
+```cpp
+stringstream ssr;
+int i = 100;
+string s;
+ssr << i;
+ssr >> s;
+ssr.clear();
+cout<< s<< endl;
+```
+
+需要注意的是，stringstream在下一次使用时需要调用clear() 方法，否则会出现无法预测的输出。
+
+另外，stringstream类的构造效率较低，建议尽量不要频繁定义stringstream类，如果需要频繁使用，可以在更外围定义，之后每次调用前进行clear() 。
+
+## 例题
+
+我们来看点例题：  
+
+### 序列查找
+
+**问题描述**
+
+输入一个n个数的序列和q次询问，每次询问一个数是否在序列中，如果在，输出序列升序排列后所在位置（从1开始）。所有输入数据的值均不会超过10000。
+
+**样例输入**
+
+4 1   
+2 3 5 1   
+5   
+
+**样例输出**
+
+5 founds at 4  
+
+**解题思路**
+
+根据题目需要对序列进行升序排序，可以使用sort()函数进行升序排序，然后我们可以用STL带的二分查找函数进行询问的查找。
