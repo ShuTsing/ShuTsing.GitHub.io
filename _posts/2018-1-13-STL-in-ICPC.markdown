@@ -1054,7 +1054,6 @@ s.insert(make_pair(k, v));
 
 s.insert({k, v}); //C++ 11;
 
-s.insert({{k1, v1}, {k2, v2}});//C++ 11
 ```
 
 map也可以通过下标运算符[]插入：  
