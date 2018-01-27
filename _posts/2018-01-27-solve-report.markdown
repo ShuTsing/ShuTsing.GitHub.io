@@ -17,6 +17,8 @@ tags:
 ### 题目大意
 有一串项链如图：
 
+![pic](http://m.qpic.cn/psb?/V13vYfrQ0BcQhP/j1VV.*U*G5kGMn2EltzS55qlwpzyzFhUvIspYveF4bg!/b/dJEAAAAAAAAA&bo=3wFOAAAAAAADB7I!&rf=viewer_4)
+
 要求上一个珠子的左半部分和下一个珠子的右半部分颜色相同，现在给你n(1<=n<=1000)个珠子，每个珠子都要用上，问能不能构造出满足要求的项链。项链颜色不超过50种。
 
 ### 解题思路
