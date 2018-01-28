@@ -14,9 +14,11 @@ tags:
     - 题解
 ---
 
-做题时间完结后放送……
 
-# A - ACboy needs your help again! hdu 1702
+# A - ACboy needs your help again!
+
+**hdu - 1702**
+
 ## 题目大意
 
 给出先进先出（队列）和先进后出（栈）两种结构， 每种均给出In和Out两类操作，如果是In，push进后面的数，如果是Out，输出栈顶（队首）。
@@ -102,7 +104,9 @@ int main()
 
 ```
 
-# B - Parentheses Balance uva 673
+# B - Parentheses Balance
+
+**uva - 673**
 
 ## 题目大意
 
@@ -180,7 +184,9 @@ int main()
 
 ```
 
-# C - 简单计算器 hdu 1237
+# C - 简单计算器
+
+**hdu - 1237**
 
 ## 题目大意
 
@@ -265,7 +271,9 @@ int main()
 }
 ```
 
-# D - Where is the Marble? uva 10474
+# D - Where is the Marble?
+
+**uva - 10474**
 
 ## 题目大意
 
@@ -316,7 +324,9 @@ int main()
 
 ```
 
-# E - The Blocks Problem uva 101
+# E - The Blocks Problem
+
+**uva - 101**
 
 ## 题目大意
 
@@ -424,7 +434,9 @@ int main()
 }
 ```
 
-# F - Andy's First Dictionary uva 10815
+# F - Andy's First Dictionary
+
+**uva - 10815**
 
 ## 题目大意
 
@@ -472,7 +484,9 @@ int main(void)
 
 ```
 
-# G - 水果 hdu 1263
+# G - 水果
+
+**hdu - 1263**
 
 ## 题目大意
 
