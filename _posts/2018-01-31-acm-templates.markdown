@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "ACM-ICPC 模板"
-subtitle:   "Templates of ACM-ICPC"
+title:      "ACM-ICPC 算法模板"
+subtitle:   "Algorithm Templates of ACM-ICPC"
 date:       2018-01-31 11:24:00
 author:     "ShuTsing"
 header-img: "img/post-bg-24.jpg"
@@ -98,8 +98,8 @@ void dijkstra(int s)
     /*pic: 图， bcc: 每个BCC包含的点，从1开始*/
     vector <int> pic[MAXN], bcc[MAXN];
     stack <edge> st;
-    /*对于非连通图，需要每个点判断pre调用dfs
-      iscut: 判断是否是割点
+    /*对于非连通图，需要每个点判断pre调用dfs  
+      iscut: 判断是否是割点  
       bccno：每个点所在的BCC，割点的无意义*/
     int pre[MAXN], iscut[MAXN], bccno[MAXN];
     edge cnt[MAXN];
