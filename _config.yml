@@ -90,10 +90,13 @@ friends: [
     #     title: "Su",
     #     href: "http://su.gallery/"
     # },{
-        title: "Bilibili动画",
+        title: "bilibili动画",
         href: "https://www.bilibili.com/"
     },{
         title: "知乎",
         href: "https://www.zhihu.com/"
+    },{
+        title: "cmjj的博客",
+        href: "https://blog.lichenming.ml/"
     }
 ]
