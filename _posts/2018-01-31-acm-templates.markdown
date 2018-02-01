@@ -85,6 +85,54 @@ void dijkstra(int s)
 }
 ```
 
+#### SPFA bfs判负环
+
+```cpp
+    struct node
+    {
+        int to, cost;
+    };
+    vector <node> G[MAXN];
+    /*cnt: 每个点入队次数*/
+    int d[MAXN], cnt[MAXN];
+    bool vis[MAXN];
+    int V;
+bool spfa(int s)
+{
+    queue <int> q;
+    fill(d, d + V + 1, INF);
+    memset(cnt, 0, sizeof(cnt));
+    memset(vis, 0, sizeof(vis));
+    d[s] = 0;
+    q.push(s);
+    cnt[s]++;
+    while (!q.empty())
+    {
+        int u = q.front();
+        q.pop();
+        vis[u] = false;
+        for (auto& i: G[u])
+        {
+            int v = i.to;
+            int c = i.cost;
+            if (d[v] > d[u] + c)
+            {
+                d[v] = d[u] + c;
+                if (!vis[v])
+                {
+                    q.push(v);
+                    vis[v] = true;
+                    cnt[v]++;
+                    if (cnt[v] >= V + 1)
+                        return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+```
+
 ### 双连通分量（BCC）
 
 无向图
