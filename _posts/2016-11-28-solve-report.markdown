@@ -28,7 +28,7 @@ tags:
 ### 思路
 筛法预处理小于n的素数，然后穷举寻找即可。
 ### 代码
-```cpp
+{% highlight bash lineanos %}
 #include <iostream>
 
 #include <cstring>
@@ -57,7 +57,7 @@ int main(void)
     }
     return 0;
 }
-```
+{% endhighlight %}
 ## B - Design Tutorial: Learn from Life
 ### 题目大意
 有n个人，给出每个人期望到达的楼层和一个电梯的容量k(1 ≤ n, k ≤ 2000)，电梯每经过一层耗时一个单位，其余事项均不耗时，求电梯运完所有人的最小耗时。  
