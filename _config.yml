@@ -46,6 +46,7 @@ highlighter: rouge
 kramdown:
   input: GFM                            # use Github Flavored Markdown !important
   syntax_highlighter: rouge
+  code_class: 'css/syntax.css'
 
 
 
