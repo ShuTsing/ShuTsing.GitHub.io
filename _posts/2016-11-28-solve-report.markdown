@@ -28,7 +28,7 @@ tags:
 ### 思路
 筛法预处理小于n的素数，然后穷举寻找即可。
 ### 代码
-{% highlight cpp linenos = table %}
+{% highlight cpp linenos %}
 #include <iostream>
 
 #include <cstring>
