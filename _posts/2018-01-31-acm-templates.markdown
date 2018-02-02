@@ -14,13 +14,16 @@ tags:
     - C++
 ---
 
+* TOC
+{:toc}
+
 ## 图论模板
 
 ### 欧拉回路
 
 判断是否是欧拉图：所有结点的度数为偶数。
 
-{% highlight c++ linenos %}
+```cpp
     struct edge
     {
         int u;
@@ -40,7 +43,7 @@ void euler(int u)
         }
     return;
 }
-{% endhighlight %}
+```
 
 ### 最短路径
 
