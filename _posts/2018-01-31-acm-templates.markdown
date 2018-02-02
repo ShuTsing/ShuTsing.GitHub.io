@@ -20,7 +20,7 @@ tags:
 
 判断是否是欧拉图：所有结点的度数为偶数。
 
-```cpp
+{% highlight c++ linenos %}
     struct edge
     {
         int u;
@@ -40,7 +40,7 @@ void euler(int u)
         }
     return;
 }
-```
+{% endhighlight %}
 
 ### 最短路径
 
