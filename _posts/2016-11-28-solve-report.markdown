@@ -28,7 +28,7 @@ tags:
 ### 思路
 筛法预处理小于n的素数，然后穷举寻找即可。
 ### 代码
-{% highlight bash lineanos %}
+{% highlight cpp linenos %}
 #include <iostream>
 
 #include <cstring>
@@ -64,7 +64,7 @@ int main(void)
 ### 思路
 电梯每一次运输的耗时只和将要到达最高楼层相关。贪心，用计数方法记录每个人到达的楼层数，然后从大到小选择即可。  
 ### 代码
-```cpp
+~~~cpp
 #include <iostream>  
 
 using namespace std;
@@ -122,7 +122,7 @@ int main(void)
     cout<<ans<<endl;
     return 0;
 }
-```
+~~~
 ## C - Design Tutorial: Make It Nondeterministic
 ### 题目大意
 有n个人，给出每个人的姓和名，每个人用姓或者名参与一次字典序排序，给出一个排序顺序，问能否按照给出的顺序成功对这n个人进行字典序从小到大排序。  
