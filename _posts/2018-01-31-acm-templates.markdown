@@ -138,6 +138,77 @@ bool spfa(int s)
 }
 ```
 
+### 生成树
+
+#### Prim 邻接矩阵
+
+```cpp
+using namespace std;
+    int cost[MAXN][MAXN]; //结点i到j的最短距离，没有边初始化为INF
+    int mincost[MAXN];
+    bool used[MAXN]; //点是否在集合内
+    bool tree[MAXN][MAXN]; //最小生成树，有向
+    int pre[MAXN]; //最小生成树每个结点的父节点
+    int V;
+int prim(int s)
+{
+    fill(mincost, mincost + V + 1, INF);
+    memset(used, 0, sizeof(used));
+    memset(tree, 0, sizeof(tree));
+    memset(pre, -1, sizeof(pre));
+    mincost[s] = 0;
+    int res = 0;
+    while (true)
+    {
+        int v = -1;
+        for (int u = 1; u <= V; u++) //结点从1开始
+            if (!used[u] && (v == -1 || mincost[u] < mincost[v]))
+                v = u;
+        if (v == -1)
+            break;
+        used[v] = true;
+        if (pre[v] != -1)
+            tree[pre[v]][v] = true;
+        res += mincost[v];
+        int finu = INF;
+        for (int u = 1; u <= V; u++) //结点从1开始
+            if(mincost[u] > cost[v][u])
+            {
+                mincost[u] = cost[v][u];
+                pre[u] = v;
+            }
+    }
+    return res;
+}
+```
+
+#### 次小生成树
+
+删掉每条最小生成树的边后求解删边后的最小生成树。
+```cpp
+//需保证没有重边
+//mintr: 最小生成树邻接矩阵表示
+int ans = INF;
+for(int i = 1; i <= V; i++) //结点从1开始
+{
+    for(int j = 1; j <= V; j++) //结点从1开始
+    {
+        if(mintr[i][j] == 1)
+        {
+            int c=cost[i][j];
+            cost[i][j] = INF;
+            cost[j][i] = INF;
+            int temp=prim(1);
+            if(temp >= res) //res: 最小生成树权值和
+                ans = min(ans, temp);
+            cost[i][j] = c;
+            cost[j][i] = c;
+        }
+    }
+}
+```
+
+
 ### 双连通分量（BCC）
 
 无向图
