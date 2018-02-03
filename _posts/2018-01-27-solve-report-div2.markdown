@@ -31,13 +31,9 @@ tags:
 
 ```cpp
 #include <iostream>
-
 #include <queue>
-
 #include <stack>
-
 #include <string>
-
 using namespace std;
 int main()
 {
@@ -126,20 +122,15 @@ getline(cin, s);
 ## 代码
 ```cpp
 #include <iostream>
-
 #include <queue>
-
 #include <stack>
-
 #include <string>
-
 using namespace std;
 int main()
 {
     int t;
     cin>> t;
     getchar(); //玄学处理法
-
     while (t--)
     {
         string str;
@@ -200,15 +191,10 @@ int main()
 
 ```cpp
 #include <iostream>
-
 #include <queue>
-
 #include <stack>
-
 #include <string>
-
 #include <cstdio>
-
 using namespace std;
     stack <double> st;
     char oper, xuanxue;
@@ -253,11 +239,9 @@ int main()
                 num = st.top() / num; st.pop(); st.push(num); break;
         }
         if (xuanxue == 10) //判断是不是换行
-
         {
             init();
             while (xuanxue == 10) //用while防止连续出现好几个都只有一个数字的表达式
-
             {
                 if (fir == 0)
                     return 0;
@@ -286,13 +270,9 @@ int main()
 ## 代码
 ```cpp
 #include <iostream>
-
 #include <algorithm>
-
 #include <string>
-
 #define MAXN 10005
-
 using namespace std;
     int num[MAXN];
 int main()
@@ -356,19 +336,14 @@ int main()
 
 ```cpp
 #include<iostream>
-
 #include<algorithm>
-
 #include<string>
-
 #include<vector>
-
 using namespace std;
 const int maxn = 30;
 int n;
 vector<int> pile[maxn];
 //找到木块a所在的pile和height，以引用的形式返回调用者
-
 void find_block(int a, int& p, int& h)
 {
 	for (p = 0; p < n; p++)
@@ -378,7 +353,6 @@ void find_block(int a, int& p, int& h)
     return;
 }
 //把第p堆高度为h的木块上方的所有木块移回原位
-
 void clear_above(int p, int h)
 {
 	for (int i = h + 1; i < pile[p].size(); i++)
@@ -390,7 +364,6 @@ void clear_above(int p, int h)
     return;
 }
 //把第p堆高度为h及其上方的木块整体移动到p2堆的顶部
-
 void pile_onto(int p, int h, int p2)
 {
 	for (int i = h; i < pile[p].size(); i++)
@@ -452,13 +425,9 @@ C题简单计算器也可按照这种方法，将数字字符串和运算符字�
 
 ```cpp
 #include <set>
-
 #include <string>
-
 #include <iostream>
-
 #include <sstream>
-
 using namespace std;
 set <string> st;
 int main(void)
@@ -500,11 +469,8 @@ int main(void)
 
 ```cpp
 #include <iostream>
-
 #include <map>
-
 #include <string>
-
 using namespace std;
     map <string, map <string, int> > m;
 int  main()

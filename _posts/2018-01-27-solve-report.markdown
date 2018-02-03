@@ -30,17 +30,11 @@ tags:
 
 ```cpp
 #include <iostream>
-
 #include <vector>
-
 #include <cstring>
-
 #include <algorithm>
-
 #include <set>
-
 #define MAXN 55
-
 using namespace std;
     struct edge
     {
