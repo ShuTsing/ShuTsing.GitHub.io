@@ -245,7 +245,7 @@ void bfs(int s)
     return;
 }
 
-ll dfs(int v, int t, int f)
+int dfs(int v, int t, int f)
 {
     if (v == t)
         return f;
@@ -284,6 +284,8 @@ int max_flow(int s, int t)
 
 ### 二分图匹配
 
+#### 匈牙利算法
+
 ```cpp
     int V;
     vector <int> G[MAXN];
@@ -311,7 +313,7 @@ int biparmat()
     for (int v = 0; v < V; v++)
         if (match[v] < 0)
         {
-            memset(uesd, 0, sizeof(uesd));
+            memset(used, 0, sizeof(used));
             if (dfs(v))
                 res++;
         }
