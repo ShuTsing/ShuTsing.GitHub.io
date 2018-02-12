@@ -4,7 +4,7 @@ title:      "CQUPT 2018 寒假训练 解题报告 Div1 1.28 - 1.29"
 subtitle:   "CQUPT Training Div1 Jan28th - Jan29th 2018"
 date:       2018-02-12 22:30:00
 author:     "ShuTsing"
-header-img: "img/post-bg-26.jpg"
+header-img: "img/post-bg-28.jpg"
 header-mask: 0.3
 catalog:    true
 tags:
