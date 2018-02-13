@@ -30,7 +30,7 @@ tags:
 
 这次的剧场版则是在TV版的治愈结局之后，描述小圆和小焰再一次相遇的故事。
 
-![](http://i1.bvimg.com/630678/a586204248987798s.jpg)
+![](http://static.zybuluo.com/PaulGuan/sp3lmd2wd8f79yfnk1g19p90/a586204248987798s.jpg)
 
 好的，上面内容是欺骗萌新的。
 
@@ -38,11 +38,11 @@ tags:
 
 那张海报也是真的，不过新篇有三张海报：
 
-![](http://i1.bvimg.com/630678/0d3bff5cc17d61afs.jpg)
+![](http://static.zybuluo.com/PaulGuan/ifqhppw1x0rwssk1sfm3pozn/0d3bff5cc17d61afs.jpg)
 
 不过说回来，这部剧场版的信息量安排稍显不合理，前半部分和后半部分的节奏速度明显有区别，虽然前半部分并不算拖，但是考虑到后半部分的信息量，还是应该压缩一部分内容的，比如那个五人尬舞环节。据说宫本幸裕监督是打算删了的，结果被总监督新房昭之给骂了一顿233。
 
-![](http://i1.bvimg.com/630678/a2b95aca719c6f5cs.png)
+![](http://static.zybuluo.com/PaulGuan/bz9uk380gtlca4vrv0ux3ejd/a2b95aca719c6f5cs.png)
 
 剧情的后半段反复在HE和BE之间反复切换，最后本以为要HE了，看了眼进度条，心就凉了半截……好像据说，老虚打算挑战下自己，写个HE，但是被新房监督要求改成了现在的结局，很有冲击力，但是稍感和前半段不太搭。
 
