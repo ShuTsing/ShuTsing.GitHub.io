@@ -96,10 +96,16 @@ friends: [
         title: "bilibili动画",
         href: "https://www.bilibili.com/"
     },{
-        title: "知乎",
-        href: "https://www.zhihu.com/"
+        title: "qdz的博客",
+        href: "https://qinruifeng.pro/"
     },{
         title: "cmjj的博客",
         href: "https://blog.lichenming.ml/"
+    },{
+        title: "每日治愈",
+        href: "https://kami.im/"
+    },{
+        title: "圆环之理研究所",
+        href: "http://www.madokami.ac.cn/"
     }
 ]
