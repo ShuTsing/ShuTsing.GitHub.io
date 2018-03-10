@@ -1,4 +1,5 @@
-# ACM题解汇总
+
+# TUTORIAL
 
 [CQUPT 2018 寒假训练 解题报告 Div1 2.02 - 2.03](http://blog.shutsing.me/2018/02/14/solve-report/)
 
