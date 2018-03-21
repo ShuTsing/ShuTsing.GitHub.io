@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "CQUPT 2018 寒假训练 解题报告 Div1 2.02 - 2.03"
-subtitle:   "CQUPT Training Div1 Feb02nd - Feb03rd 2018"
+title:      "CQUPT 2018 春季训练 解题报告 3.12 - 3.19"
+subtitle:   "CQUPT Training Mar12st - Feb19st 2018"
 date:       2018-03-20 12:37:00
 author:     "ShuTsing"
 header-img: "img/post-bg-8.jpg"
