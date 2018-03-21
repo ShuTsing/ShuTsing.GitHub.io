@@ -94,15 +94,15 @@ tags:
 
 我们现在用函数f替换误差表，得到公式：
 
-**Week = (Day + 2 + 2 * Mon + 3 * (Mon + 1) / 5 - 1 + Year + Year / 4 - Year / 100 + Year / 400) mod 7** (7
+**Week = (Day + 2 + 2 * Mon + 3 * (Mon + 1) / 5 - 1 + Year + Year / 4 - Year / 100 + Year / 400) mod 7** (8
 
 整理，得：
 
-**Week = (Day + 1 + 2 * Mon + 3 * (Mon + 1) / 5 + Year + Year / 4 - Year / 100 + Year / 400) mod 7** (8
+**Week = (Day + 1 + 2 * Mon + 3 * (Mon + 1) / 5 + Year + Year / 4 - Year / 100 + Year / 400) mod 7** (9
 
 我们现在将0-6从表示星期天到星期六改成表示星期一到星期日，则得到：
 
-**Week = (Day + 2 * Mon + 3 * (Mon + 1) / 5 + Year + Year / 4 - Year / 100 + Year / 400) mod 7** (9
+**Week = (Day + 2 * Mon + 3 * (Mon + 1) / 5 + Year + Year / 4 - Year / 100 + Year / 400) mod 7** (10
 
 证毕。
 
