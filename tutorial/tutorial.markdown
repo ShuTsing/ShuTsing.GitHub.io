@@ -1,6 +1,8 @@
 
 # TUTORIAL
 
+[CQUPT 2018 春季训练 解题报告 3.12 - 3.19](http://blog.shutsing.me/2018/03/20/solve-report/)
+
 [CQUPT 2018 寒假训练 解题报告 Div1 2.02 - 2.03](http://blog.shutsing.me/2018/02/14/solve-report/)
 
 [CQUPT 2018 寒假训练 解题报告 Div1 1.31 - 2.01](http://blog.shutsing.me/2018/02/13/solve-report2/)
