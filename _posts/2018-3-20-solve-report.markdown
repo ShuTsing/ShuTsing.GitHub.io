@@ -337,7 +337,7 @@ int main()
 
 ```
 
-### O - Regular Bracket Sequence
+## O - Regular Bracket Sequence
 
 **CodeForces - 26B**
 
@@ -374,7 +374,7 @@ int main()
 ```
 
 
-### P - A Student's Dream
+## P - A Student's Dream
 
 **CodeForces - 62A**
 
