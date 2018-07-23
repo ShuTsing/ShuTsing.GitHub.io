@@ -4,7 +4,7 @@ title:      "AC自动机算法讲解"
 subtitle:   "Aho-Corasick Automation Algorithm"
 date:       2018-07-23 20:32:00
 author:     "ShuTsing"
-header-img: "img/post-bg-12.jpg"
+header-img: "img/post-bg-5.jpg"
 header-mask: 0.3
 catalog:    true
 tags:
