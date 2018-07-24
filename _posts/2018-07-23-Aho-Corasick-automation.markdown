@@ -46,21 +46,25 @@ struct Trie
 
 一个经典的Trie如下图：
 
-//插入图1
+![1](https://upload-images.jianshu.io/upload_images/13252077-138c71fece60b706.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 正篇
 
-前面提到的KMP算法，要找出最长的相同前后缀，我们一般会用一个next数组实现，如下：
+前面提到的KMP算法，要找出最长的相同前后缀，我们一般会用一个next数组实现，假设字符串为：
 
-//插入图2
+![2](https://upload-images.jianshu.io/upload_images/13252077-745d75c7de9771a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-//插入表1
+则其next数组为：
 
-如果说，我们不用数组，而改用指针来实现这个功能，那么怎么解决呢？
+| IDX | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| VALUE | -1 | -1 | 0 | 1 | 2 | -1 | 0 |
 
-我们可以用一个指针，将其从最后一个字符，指向后缀中最长相同前后缀的起始字符，以此来实现跳转：
+如果说，我们不用数组，而改用链表来实现这个功能，那么怎么解决呢？
 
-//插入图3
+我们可以用一个指针，将其从最后一个字符，指向前缀中最长相同前后缀的末尾字符，如果最长相同前后缀为0，那么我们在字符串链表启示再插入一个root节点，将其指向root节点，以此来实现跳转：
+
+![3](https://upload-images.jianshu.io/upload_images/13252077-30b0f9efba80464e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 这个指针有专门的名字，叫做fail指针，中文名叫做失配（~~失去配偶~~ 匹配失败）指针。
 
