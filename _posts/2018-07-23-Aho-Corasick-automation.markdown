@@ -58,7 +58,7 @@ struct Trie
 
 | IDX | 0 | 1 | 2 | 3 | 4 | 5 | 6
 | :-: | :-: | :-: | :-: | :-: | :-: | :-:
-| VALUE | -1 | -1 | 0 | 1 | 2 | -1 | 0 
+| VALUE | -1 | -1 | 0 | 1 | 2 | -1 | 0
 
 如果说，我们不用数组，而改用链表来实现这个功能，那么怎么解决呢？
 
@@ -99,9 +99,70 @@ struct Trie
 
 我们用BFS遍历节点，对于遍历到的当前字符节点C，如果其父亲节点FC的失配指针所指向的节点D存在儿子SD，且儿子节点SD的值和C的值相同，则将字符节点C的失配指针指向SD，如果没有，则从D的失配指针寻找，直到找到root都没有的话，则将其指向root。
 
+代码如下：
+```cpp
+void AhoCorasick::buildFailer()
+{
+    while (!m_que.empty())
+        m_que.pop();
+    m_root->m_fail = NULL;
+    m_que.push(m_root);
+    while (!m_que.empty())
+    {
+        Trie* temp = m_que.front();
+        m_que.pop();
+        Trie* p = NULL;
+        for (int i = 0; i < 26; i++)
+        {
+            if (temp->m_next[i] == NULL)
+                continue;
+            p = temp->m_fail;
+            while (p != NULL)
+            {
+                if (p->m_next[i] != NULL)
+                {
+                    temp->m_next[i]->m_fail = p->m_next[i];
+                    break;
+                }
+                p = p->m_fail;
+            }
+            if (p == NULL)
+                temp->m_next[i]->m_fail = m_root;
+            m_que.push(temp->m_next[i]);
+        }
+    }
+    return;
+}
+```
 
+对于字符串的匹配，如果沿着当前路径可以到达目标字符，则走这条路径的下一个节点，否则，跳转到fail指针所指向的节点，直到root节点。
 
+代码如下：
 
+```cpp
+int AhoCorasick::query(string& s)
+{
+    Trie* p = m_root;
+    int cnt = 0;
+    for (auto& i: s)
+    {
+        while (p->m_next[i-'a'] == NULL && p != m_root)
+            p = p->m_fail;
+        p = p->m_next[i-'a'];
+        if (p == NULL)
+            p = m_root;
+        Trie* temp = p;
+        while (temp != m_root)
+        {
+            if (temp->m_wordCnt == -1)
+                break;
+            cnt+=temp->m_wordCnt;
+            temp->m_wordCnt = -1;
+            temp = temp->m_fail;
+        }
+    }
+    return cnt;
+}
+```
 
-
-未完待续……先挂着再说……
+一般在算法竞赛中，我们会用数组来模拟指针进行操作，这样一来避免了指针使用的诸多不便，不过使用指针实现更利于理解，所以上述代码均用指针实现。
