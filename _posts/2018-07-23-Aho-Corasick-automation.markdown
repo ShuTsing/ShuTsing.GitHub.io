@@ -80,7 +80,7 @@ struct Trie
 
 用一张图来说明一下：
 
-//插入图4
+![4](https://upload-images.jianshu.io/upload_images/13252077-505007cb52922fcf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 这样AC自动机的结构只需在Trie树的结构中加入失配指针即可：
 
