@@ -143,4 +143,8 @@ int main() {
 
 
 
-先挂着再说……
+## 结尾
+
+嘛……好像也没什么好用来结尾的，该讲的似乎都在正篇讲完了，先占个坑看有没有什么正篇没收录的到时候再补在这里（逃。
+
+![sao](https://upload-images.jianshu.io/upload_images/13252077-3d774a5e373e414a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
