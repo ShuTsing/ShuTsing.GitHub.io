@@ -68,7 +68,7 @@ tags:
 ```cpp
 vector <int> vec;
 int getID(int num) {
-    return lower_bound(v.begin(), v.end(), x) - v.begin() + 1;
+    return lower_bound(vec.begin(), vec.end(), num) - vec.begin() + 1;
 }
 int main() {
     for (int i = 0; i < n; i++)
