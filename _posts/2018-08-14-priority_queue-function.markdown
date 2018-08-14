@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "CodeBlocks17.12的编译器中priority_queue比较函数问题"
+title:      "CodeBlocks17.12编译器priority_queue比较函数问题"
 subtitle:   "Compile problem of priority_queue in CodeBlocks"
 date:       2018-08-14 20:48:00
 author:     "ShuTsing"
