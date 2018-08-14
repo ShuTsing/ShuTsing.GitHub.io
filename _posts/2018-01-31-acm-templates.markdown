@@ -407,3 +407,164 @@ void init()
     return;
 }
 ```
+
+## 数据结构模板
+
+### treap_set
+```cpp
+template <typename T>
+class treap_set
+{
+public:
+    treap_set(): root(NULL) {}
+    void clear()
+    {
+        if (root!=NULL)
+            clear(root);
+    }
+    void insert(T& x) {
+        insert(root, x);
+    }
+    void erase(T& x) {
+        remove(root, x);
+    }
+    bool find(T& x) {
+        return find(root, x);
+    }
+    T kth(int k) {
+        return kth(root, k);
+    }
+    int rank(T& x) {
+        return rank(root, x);
+    }
+    int size() {
+        return root->s;
+    }
+private:
+    struct Node
+    {
+        Node* ch[2];//左右子树
+        int r;//优先级，数值越大，优先级越高
+        T v;//值
+        int s;//结点总数
+        int cmp(T x) const{
+            if(x==v) return -1;
+            return x<v?0:1;
+        }
+        void maintain()
+        {
+            s=1;
+            if(ch[0]!=NULL) s+=ch[0]->s;
+            if(ch[1]!=NULL) s+=ch[1]->s;
+        }
+    };
+    Node* root;
+    void clear(Node*& o)
+    {
+        if (o->ch[0]!=NULL)
+            clear(o->ch[0]);
+        if (o->ch[1]!=NULL)
+            clear(o->ch[1]);
+        delete o;
+        o = NULL;
+    }
+    //d=0表示左旋，d=1表示右旋
+    void rotate(Node* &o,int d)
+    {
+        Node* k=o->ch[d^1];
+        o->ch[d^1]=k->ch[d];
+        k->ch[d]=o;
+        //注意先维护o，再维护k
+        o->maintain();
+        k->maintain();
+        o=k;
+    }
+    //在以o为根的子树中插入键值x，修改o
+    void insert(Node* &o,T& x)
+    {
+        if (find(root, x) == 1)
+            return;
+        if(o==NULL){
+            o=new Node();
+            o->ch[0]=o->ch[1]=NULL;
+            o->v=x;
+            o->r=rand();
+        }
+        else{
+            int d=(x <= o->v ? 0 : 1);
+            insert(o->ch[d],x);
+            if(o->ch[d]->r>o->r){
+                rotate(o,d^1);
+            }
+        }
+        o->maintain();
+    }
+    void remove(Node* &o,T& x)
+    {
+        if (find(root, x) == 0)
+            return;
+        int d=o->cmp(x);
+        if(d==-1){
+            Node* u=o;
+            if(o->ch[0]==NULL) {
+                o=o->ch[1];
+                delete u;
+                u = NULL;
+            }
+            else if(o->ch[1]==NULL) {
+                o=o->ch[0];
+                delete u;
+                u = NULL;
+            }
+            else{
+                int d2=(o->ch[0]->r>o->ch[1]->r?1:0);
+                rotate(o,d2);
+                remove(o->ch[d2],x);
+
+            }
+        }
+        else
+            remove(o->ch[d],x);
+        if(o!=NULL)
+            o->maintain();
+    }
+    bool find(Node* o,T& x)
+    {
+        while(o!=NULL){
+            int d=o->cmp(x);
+            if(d==-1) return 1;//存在
+            else o=o->ch[d];
+        }
+        return 0;//不存在
+    }
+    //找出第k小元素
+    T kth(Node* o,int k)
+    {
+        if(o==NULL || k<=0 || k>o->s)
+            return T();					//出错
+        if(o->ch[0]==NULL && k==1)
+            return (T)o->v;
+        if(o->ch[0]==NULL)
+            return kth(o->ch[1],k-1);
+        if(o->ch[0]->s>=k)
+            return kth(o->ch[0],k);
+        if(o->ch[0]->s+1==k)
+            return (T)o->v;
+         return kth(o->ch[1],k-o->ch[0]->s-1);
+    }
+    //值x的“名次”，即比x小的结点个数加1
+    int rank(Node* o,T& x)
+    {
+        if (find(root, x) == 0)
+            return -1;
+        if(o==NULL) return 1;
+        int d=o->cmp(x);
+        int tmp = 0;
+        if (o->ch[0] != NULL)
+            tmp = o->ch[0]->s;
+        if(d==1) return tmp+1+rank(o->ch[1],x);
+        return rank(o->ch[0],x);
+    }
+
+};
+```
