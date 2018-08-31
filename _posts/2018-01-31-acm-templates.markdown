@@ -568,3 +568,22 @@ private:
 
 };
 ```
+
+## 数学模板
+
+### 二分快速乘
+
+```cpp
+ll qkmul(ll a ,ll b , ll m)
+{
+    ll sum=0;
+    while(b)
+    {
+        if(b&1)
+            sum=(sum+a)%m;
+        a=(a+a)%m;
+        b/=2;
+    }
+    return sum;
+}
+```
