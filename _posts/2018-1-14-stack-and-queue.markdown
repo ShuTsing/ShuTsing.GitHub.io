@@ -19,7 +19,7 @@ tags:
 
 栈 是仅允许在表尾进行插入和删除操作的线性表。我们把允许插入和删除的一端称为栈顶（top），另一端称为栈底（bottom）。栈是一种后进先出（Last In First Out）的线性表，简称（LIFO)结构。栈的一个典型应用是在集合中保存元素的同时颠倒元素的相对顺序。
 
-![Stack](http://img.blog.csdn.net/20170411174800756?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvRXRoYW5fQXBwbGU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![Stack](https://upload-images.jianshu.io/upload_images/13252077-f6917e708a7c1fb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![Stack2](https://upload-images.jianshu.io/upload_images/2959073-1e166da9b9a83a09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)
 
