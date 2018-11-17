@@ -12,7 +12,9 @@ tags:
     - 算法
 ---
 
-接下来我将介绍栈，队列和树，图的表示方法。
+## 写在前面
+
+![front](https://upload-images.jianshu.io/upload_images/13252077-198c09fe61c87049.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 栈（Stack）
 
@@ -32,9 +34,7 @@ tags:
 
 如果能，输出火车站的进出站记录。
 
-![pic1](http://acm.hdu.edu.cn/data/images/1022-1.jpg)
-![pic1](http://acm.hdu.edu.cn/data/images/1022-2.jpg)
-![pic1](http://acm.hdu.edu.cn/data/images/1022-3.jpg)
+![pic1](https://upload-images.jianshu.io/upload_images/13252077-9cf361fd21243de6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 **样例输入**
 
@@ -69,7 +69,7 @@ FINISH
 
 而我们一般会用一种叫做循环队列的方式来解决假溢出：  
 
-![Queue3](http://img.blog.csdn.net/20170411174317208?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvRXRoYW5fQXBwbGU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![Queue3](https://upload-images.jianshu.io/upload_images/13252077-dba523e5f3b63e27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 我们也可以用链式存储结构解决假溢出问题。
 
@@ -103,4 +103,8 @@ FINISH
 
 ## 树
 
+![tree](https://upload-images.jianshu.io/upload_images/13252077-0b57e45763225fc6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ## 图
+
+![graph](https://upload-images.jianshu.io/upload_images/13252077-9d5e37f00f072a09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

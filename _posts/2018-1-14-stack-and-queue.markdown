@@ -38,7 +38,7 @@ tags:
 
 而我们一般会用一种叫做循环队列的方式来解决假溢出：  
 
-![Queue3](http://img.blog.csdn.net/20170411174317208?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvRXRoYW5fQXBwbGU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![Queue3](https://upload-images.jianshu.io/upload_images/13252077-dba523e5f3b63e27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 我们也可以用链式存储结构解决假溢出问题。
 
