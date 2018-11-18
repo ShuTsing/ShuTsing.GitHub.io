@@ -14,6 +14,13 @@ tags:
 
 ## 写在前面
 
+逻辑结构的种类：  
+
+- 集合 结构中的数据元素除了同属于一种类型外，别无其它关系。
+- 线性结构 数据元素之间一对一的关系
+- 树形结构 数据元素之间一对多的关系
+- 图状结构或网状结构 结构中的数据元素之间存在多对多的关系
+
 ![front](https://upload-images.jianshu.io/upload_images/13252077-198c09fe61c87049.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 栈（Stack）
@@ -105,6 +112,63 @@ FINISH
 
 ![tree](https://upload-images.jianshu.io/upload_images/13252077-0b57e45763225fc6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+### 树的基本术语：
+
+- 孩子结点：结点的子树的根称为该结点的孩子；   
+- 双亲结点：B结点是A结点的孩子，则A结点是B结点的双亲；   
+- 兄弟结点：同一双亲的孩子结点；   
+- 树的高（深）度：树中最大的结点层；   
+- 结点的度：结点子树的个数；   
+- 叶子结点：也叫终端结点，是度为0的结点；    
+- 森林：互不相交的树集合；   
+- 边权：边上的权值；
+- 点权：点上的权值；
+
+### 树的储存方式
+
+- 双亲表示法
+- 图的储存方式
+
+#### 双亲表示法
+
+Father[u] = v;    
+表示节点v的双亲节点为u。    
+
+![hahaha](https://upload-images.jianshu.io/upload_images/13252077-f27da36c87462134.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ## 图
 
 ![graph](https://upload-images.jianshu.io/upload_images/13252077-9d5e37f00f072a09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+### 图的术语
+
+- 有向图：图的所有边单向可达；
+- 无向图：图的所有边双向可达；
+- 路径：依次遍历顶点序列之间的边所形成的轨迹。没有重复顶点的路径称为简单路径；
+- 环：环是指路径包含相同的顶点两次或两次以上。也就是说，在有向图的一条路径中，如果从某顶点出发，最后能够返回该顶点，则该路径是环。除了第一个顶点和最后一个顶点之外，其余顶点不重复出现的回路称为简单环或简单回路；
+- 生成树：一个连通图的生成树是一个极小连通子图，它含有图中全部顶点，但只有足以构成一棵树的n-1条边；
+- 连通性：对于无向图而言，如果它的每个顶点都能通过某条路径到达其他顶点，那么我们称它为连通的。如果该条件在有向图中同样成立，则称该图是强连通。
+
+### 图的储存方式
+
+- 邻接矩阵
+- 邻接表
+- 边集数组
+
+### 邻接矩阵
+
+![233](https://upload-images.jianshu.io/upload_images/13252077-9ade787751490f40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+### 邻接表
+![gg](https://upload-images.jianshu.io/upload_images/13252077-7358c670b72c4cae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![gg2](https://upload-images.jianshu.io/upload_images/13252077-ef4bd428365853d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+### 图的遍历
+
+#### 深度优先遍历
+
+![dep](https://upload-images.jianshu.io/upload_images/13252077-6f069d3bff9849f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+#### 宽度优先遍历
+
+![wth](https://upload-images.jianshu.io/upload_images/13252077-bec0cde574bcd744.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
